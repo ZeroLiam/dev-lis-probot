@@ -21,4 +21,9 @@ module.exports = (robot) => {
     // Code was pushed to the repo, what should we do with it?
     robot.log(context)
   });
+
+  robot.on('create', async context => {
+    // Code was pushed to the repo, what should we do with it?
+    robot.log(context)
+  });
 }
