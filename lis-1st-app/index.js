@@ -7,7 +7,7 @@ module.exports = (robot) => {
 
   // To get your app running against GitHub, see:
   // https://probot.github.io/docs/development/
-  robot.on('issues.opened', async context => {
+  robot.on(['issues.opened', 'push', 'create'], async context => {
     // `context` extracts information from the event, which can be passed to
     // GitHub API calls. This will return:
     //   {owner: 'yourname', repo: 'yourrepo', number: 123, body: 'Hello World!}
@@ -15,15 +15,5 @@ module.exports = (robot) => {
 
     // Post a comment on the issue
     return context.github.issues.createComment(params)
-  });
-
-  robot.on('push', async context => {
-    // Code was pushed to the repo, what should we do with it?
-    robot.log(context)
-  });
-
-  robot.on('create', async context => {
-    // Code was pushed to the repo, what should we do with it?
-    robot.log(context)
-  });
+  })
 }
